@@ -19,11 +19,16 @@ export class HeroComponent {
   }
 
   changeHero(): void {
-    this.name = 'Spider Man';
+    this.name = 'Spiderman';
   }
 
   changeAge(): void {
     this.age = 25;
+  }
+
+  resetForm(): void {
+    this.name = 'iron Man';
+    this.age = 45;
   }
   
 }
