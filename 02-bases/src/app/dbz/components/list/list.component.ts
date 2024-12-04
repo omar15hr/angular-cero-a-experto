@@ -13,4 +13,12 @@ export class ListDBZComponent {
     name: 'Trunks',
     power: 10
   }]
+
+  onDeleteId(id: number): void {
+    console.log(id);
+  }
+
+  onDeleteCharacter(index: number): void {
+    console.log(index);
+  }
 }
