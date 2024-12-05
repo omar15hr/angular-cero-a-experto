@@ -6,8 +6,9 @@
   <div class="list-group list-reset">
     <button 
       class="list-group-item list-group-item-action"
+      *ngFor="let tag of tags"
     >
-      Valorant
+      {{ tag | titlecase }}
     </button>
   </div>
 
