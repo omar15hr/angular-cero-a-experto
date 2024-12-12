@@ -10,6 +10,7 @@ import { UncommonPageComponent } from './pages/uncommon-page/uncommon-page.compo
 import { OrderComponent } from './pages/order/order.component';
 import { ToggleCasePipe } from './pipes/toggle-case.pipe';
 import { CanFlyPipe } from './pipes/can-fly.pipe';
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 
 
@@ -23,7 +24,8 @@ import { CanFlyPipe } from './pipes/can-fly.pipe';
 
     // Pipes
     ToggleCasePipe,
-    CanFlyPipe
+    CanFlyPipe,
+    SortByPipe
   ],
   imports: [
     CommonModule,
