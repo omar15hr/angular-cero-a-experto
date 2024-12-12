@@ -1,5 +1,5 @@
 <p-panel header="Pipes personalizados" class="p-2">
-  <p>Pipes personalizados - creados por {{ 'nosotros' | toggleCase:true }}</p> 
+  <p>Pipes personalizados - creados por {{ 'nosotros' | toggleCase:isUpperCase }}</p> 
 </p-panel>
 
 <p-toolbar>
@@ -8,6 +8,7 @@
       label="ToogleCase" 
       icon="pi pi-search" 
       class="mr-2"
+      (click)="toggleUpperCase()"
     />
   </div>
   <div class="p-toolbar-group-end">
