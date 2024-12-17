@@ -1,28 +1,39 @@
 import { Injectable } from '@angular/core';
 
-import { CanActivateFn, CanMatchFn } from '@angular/router';
+import { CanActivateFn, CanMatchFn, Router } from '@angular/router';
+import { Observable, tap } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({providedIn: 'root'})
 
 export class AuthGuard {
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
  
+  private checkAuthStatus(): boolean | Observable<boolean> {
+    return this.authService.checkAuthentication()
+      .pipe(
+        tap( isAuthenticated => {
+          if ( !isAuthenticated ) {
+            this.router.navigateByUrl( '/auth/login' );
+          }
+        }),
+      )
+  }
 
   public canMatch: CanMatchFn = (route, segments) => {
 
-    console.log('canMatch', { route, segments });
-
-    return true;
+    return this.checkAuthStatus();
 
   };
 
   public canActivate: CanActivateFn = (route, state) => {
 
-    console.log('canActivate', { route, state });
-
-    return true;
+    return this.checkAuthStatus();
 
   };
 
