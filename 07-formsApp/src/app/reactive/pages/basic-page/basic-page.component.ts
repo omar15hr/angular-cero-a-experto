@@ -6,7 +6,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   templateUrl: './basic-page.component.html',
   styleUrl: './basic-page.component.css'
 })
-export class BasicPageComponent {
+export class BasicPageComponent implements OnInit {
 
   public myForm: FormGroup = this.formBuilder.group({
     name: ['', 
@@ -31,6 +31,33 @@ export class BasicPageComponent {
     private formBuilder: FormBuilder,
   ) { }
 
+  ngOnInit(): void {
+    
+  }
+
+  isValidField( field: string ): boolean | null {
+    return this.myForm.controls[field].errors
+      && this.myForm.controls[field].touched;
+  }
+
+  getFieldError( field: string ): string | null {
+
+    if ( !this.myForm.controls[field] ) return null;
+
+    const errors = this.myForm.controls[field].errors || {};
+
+    for (const key of Object.keys(errors) ) {
+      switch( key ) {
+        case 'required':
+          return 'Este campo es requerido';
+
+        case 'minlength':
+          return `Mínimo ${ errors['minlength'].requiredLength } caracters.`;
+      }
+    }
+
+    return null;
+  }
 
   onSave(): void {
     if ( this.myForm.invalid ) {
