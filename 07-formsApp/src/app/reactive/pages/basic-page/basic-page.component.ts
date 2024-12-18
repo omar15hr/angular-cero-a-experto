@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
@@ -31,9 +31,12 @@ export class BasicPageComponent {
     private formBuilder: FormBuilder,
   ) { }
 
+
   onSave(): void {
     if ( this.myForm.invalid ) return;
     console.log(this.myForm.value);
+
+    this.myForm.reset({price: 0, inStorage: 0});
   }
 
 
