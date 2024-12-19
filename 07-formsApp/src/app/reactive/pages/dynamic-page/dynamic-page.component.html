@@ -59,8 +59,11 @@
                         [formControlName]="i"
                     >
 
-                    <button class="btn btn-outline-danger"
-                            type="button">
+                    <button
+                        (click)="onDeleteFavorite(i)"
+                        class="btn btn-outline-danger"
+                        type="button"
+                    >
                       Eliminar
                   </button>
                 </div>
